@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    max-width: 800px;
+  }
+
+  h1, h2 {
+    color: #333;
+  }
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  a {
+    color: #007acc;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .screenshot {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
