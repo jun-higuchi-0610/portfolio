@@ -1,0 +1,112 @@
+body {
+    font-family: "Hiragino Sans", "Meiryo", sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    text-align: center;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.goods-form {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.goods-form label {
+    font-weight: bold;
+    align-self: center;
+}
+
+.goods-form input[type="text"],
+.goods-form input[type="number"],
+.goods-form input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.button-group {
+    grid-column: span 2;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-create { background: #28a745; }
+.btn-create:hover { background: #218838; }
+
+.btn-update { background: #007bff; }
+.btn-update:hover { background: #0069d9; }
+
+.btn-delete { background: #dc3545; }
+.btn-delete:hover { background: #c82333; }
+
+.error-message {
+    grid-column: span 2;
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.goods-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.goods-table th, .goods-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.goods-table th {
+    background: #f1f1f1;
+}
+
+.goods-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.goods-table tbody tr:hover {
+    background: #f0f8ff;
+}

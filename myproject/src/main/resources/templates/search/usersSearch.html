@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー検索</title>
+    <link rel="stylesheet" href="/css/usersSearch.css" />
+</head>
+<body>
+    <a href="/menu">メニューに戻る</a>
+
+    <h5>ユーザー検索</h5>
+
+<!-- エラーメッセージ -->
+ <div th:if="${message}" style="color:red;">
+    <p th:text="${message}"></p>
+ </div>
+
+<!-- 検索フォーム -->
+<form th:action="@{/search/usersSearch}" th:object="${usersForm}" method="post">
+    <input type="text" th:field="*{id}" placeholder="IDを入力"><br>
+    <input type="text" th:field="*{name}" placeholder="名前を入力"><br>
+    <button type="submit">検索</button>
+</form>
+
+<!-- 検索結果 -->
+<h3>検索結果</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ユーザーID</th>
+            <th>名前</th>
+            <th>権限</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="users : ${usersList}">
+            <td th:text="${users.id}"></td>
+            <td th:text="${users.name}"></td>
+            <td th:text="${users.authority}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="task.myproject.repository.UsersMapper">
+
+<!-- 全件取得 -->
+<select id="findAll" resultType="task.myproject.entity.Users">
+    SELECT * FROM users
+    WHERE deleted_at IS NULL
+</select>
+
+<!-- IDで1件取得 -->
+<select id="findById" resultType="task.myproject.entity.Users">
+    SELECT * FROM users
+    WHERE id = #{id} AND deleted_at IS NULL
+</select>
+
+<!-- 新規登録 -->
+<insert id="create" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO users(name, mail, password, authority, created_at, updated_at, deleted_at)
+    VALUES(#{name}, #{mail}, #{password}, #{authority}, NOW(), NOW(), NULL)
+</insert>
+
+<!-- 更新 -->
+<update id="update">
+    UPDATE users SET
+    name = #{name},
+    mail = #{mail},
+    password = #{password},
+    authority = #{authority},
+    updated_at = NOW()
+    WHERE id = #{id}
+</update>
+
+<!-- 削除 -->
+<delete id="delete">
+    UPDATE users SET deleted_at = NOW()
+    WHERE id = #{id}
+</delete>
+
+<!-- ログイン認証 -->
+<select id="findByMailAndPassword" resultType="task.myproject.entity.Users">
+    SELECT * FROM users
+    WHERE mail = #{mail} AND password = #{password} AND deleted_at IS NULL
+</select>
+
+<!-- ユーザー検索 -->
+<select id="searchByIdAndName" resultType="task.myproject.entity.Users">
+    SELECT * FROM users
+    WHERE deleted_at IS NULL
+    <!-- @Param で渡された id が null でなければ検索 -->
+    <if test="id != null">
+        AND id = #{id}
+    </if>
+    <!-- @Param で渡された name が null または空でなければ部分一致検索 -->
+    <if test="name != null and name != ''">
+        AND name LIKE CONCAT('%', #{name}, '%')
+    </if>
+</select>
+</mapper>

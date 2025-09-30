@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品管理</title>
+    <link rel="stylesheet" href="/css/goodsControl.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/menu/manager" class="back-link">← メニューに戻る</a>
+
+        <h2>商品管理</h2>
+
+        <form method="post" th:action="@{/control}" enctype="multipart/form-data" class="goods-form">
+            <label>商品ID</label>
+            <input type="text" name="id">
+
+            <label>商品名</label>
+            <input type="text" name="name">
+
+            <label>金額</label>
+            <input type="number" name="price">
+
+            <label>在庫数</label>
+            <input type="number" name="quantity">
+
+            <label>サイズ</label>
+            <input type="text" name="size">
+
+            <label>商品画像</label>
+            <input type="file" name="imageFile">
+
+            <div class="button-group">
+                <button type="submit" name="action" value="create" class="btn btn-create">登録</button>
+                <button type="submit" name="action" value="update" class="btn btn-update">更新</button>
+                <button type="submit" name="action" value="delete" class="btn btn-delete">削除</button>
+            </div>
+
+            <p th:if="${message}" th:text="${message}" class="error-message"></p>
+        </form>
+
+        <h3>商品一覧</h3>
+        <table class="goods-table">
+            <thead>
+                <tr>
+                    <th>商品ID</th>
+                    <th>商品名</th>
+                    <th>金額</th>
+                    <th>在庫数</th>
+                    <th>サイズ</th>
+                    <th>商品画像</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="goods : ${goodsList}">
+                    <td th:text="${goods.id}"></td>
+                    <td th:text="${goods.name}"></td>
+                    <td th:text="${goods.price}"></td>
+                    <td th:text="${goods.quantity}"></td>
+                    <td th:text="${goods.size}"></td>
+                    <td>
+                        <img th:if="${goods.image}" th:src="@{${goods.image}}" width="80"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

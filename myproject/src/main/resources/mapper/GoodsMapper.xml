@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="task.myproject.repository.GoodsMapper">
+
+<!-- 全件取得 -->
+<select id="findAll" resultType="task.myproject.entity.Goods">
+    SELECT * FROM goods
+    WHERE deleted_at IS NULL
+</select>
+
+<!-- IDで1件取得 -->
+<select id="findById" resultType="task.myproject.entity.Goods">
+    SELECT * FROM goods
+    WHERE id = #{id} AND deleted_at IS NULL
+</select>
+
+<!-- 新規登録 -->
+<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO goods(name, image, price, quantity, size, created_at, updated_at, deleted_at)
+    VALUES(#{name}, #{image}, #{price}, #{quantity}, #{size}, NOW(), NOW(), NULL)
+</insert>
+
+<!-- 更新 -->
+<update id="update">
+    UPDATE goods SET
+    name = #{name},
+    image = #{image},
+    price = #{price},
+    quantity = #{quantity},
+    size = #{size},
+    updated_at = NOW()
+    WHERE id = #{id}
+</update>
+
+<!-- 削除 -->
+<delete id="delete">
+    UPDATE goods SET deleted_at = NOW()
+    WHERE id = #{id}
+</delete>
+
+<!-- 商品検索 -->
+<select id="findGoods" resultType="task.myproject.entity.Goods">
+    SELECT * FROM goods
+    WHERE deleted_at IS NULL
+    <if test="id != null">
+        AND id = #{id}
+    </if>
+    <if test="name != null and name != ''">
+        AND name LIKE CONCAT('%', #{name}, '%')
+    </if>
+    <if test="size != null and size != ''">
+        AND size = #{size}
+    </if>
+</select>
+</mapper>

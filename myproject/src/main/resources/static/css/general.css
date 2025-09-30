@@ -1,0 +1,68 @@
+/* ページ全体 */
+body {
+    font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* コンテナ */
+.menu-container {
+    background: #fff;
+    padding: 2rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+.menu-container h5 {
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    color: #2c3e50;
+}
+
+/* ボタン風リンク */
+.menu-btn {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* hover共通 */
+.menu-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
+}
+
+/* 一般用カラー */
+.general-menu .menu-btn {
+    background: #2ecc71;
+}
+
+.general-menu .menu-btn:hover {
+    background: #27ae60;
+}
+
+/* ログアウトだけ赤 */
+.menu-btn.logout {
+    background: #e74c3c !important;
+}
+
+.menu-btn.logout:hover {
+    background: #c0392b !important;
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>一般メニュー</title>
+    <link rel="stylesheet" href="/css/general.css">
+</head>
+<body>
+    <div class="menu-container general-menu">
+        <h5>一般メニュー</h5>
+
+        <a th:href="@{search/usersSearch}" class="menu-btn">ユーザー検索</a>
+        <a th:href="@{search/goodsSearch}" class="menu-btn">商品検索</a>
+        <a th:href="@{/login}" class="menu-btn logout">ログアウト</a>
+    </div>
+</body>
+</html>
