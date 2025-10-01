@@ -22,8 +22,18 @@ body {
     text-decoration: underline;
   }
 
-  .screenshot {
-    max-width: 100%;
-    border: 1px solid #ccc;
-    margin-top: 10px;
+  .screenshot-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px; /* 画像間の隙間 */
+    margin-top: 20px;
   }
+
+  .screenshot {
+    width: 100%;        /* グリッドの幅に合わせる */
+    height: auto;       /* 縦横比維持 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    object-fit: contain; /* 画像が潰れないように */
+  }
+
